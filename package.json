@@ -1,0 +1,14 @@
+{
+  "name": "clean-architecture-typescript-seed",
+  "version": "1.0.0",
+  "description": "A clean architecture typescript seed, with multiple examples of strategies",
+  "main": "app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Aranda",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
