@@ -1,1 +1,3 @@
-console.log('Hello World')
+import { startHttpServer } from '@/presentation/http/httpServer'
+
+startHttpServer()
