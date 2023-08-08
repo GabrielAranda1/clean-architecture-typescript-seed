@@ -13,8 +13,7 @@
     "sourceType": "module"
   },
   "plugins": [
-    "@typescript-eslint",
-    "plugin:prettier/recommended"
+    "@typescript-eslint"
   ],
   "rules": {
     "indent": [
@@ -44,6 +43,12 @@
       "error",
       {
         "properties": "always"
+      }
+    ],
+    "no-trailing-spaces": [
+      "error",
+      {
+        "skipBlankLines": true
       }
     ]
   }
