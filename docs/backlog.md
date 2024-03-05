@@ -19,3 +19,4 @@ Where to go and some ideas, not necessarily in order.
 - [x] Docker compose
 - [ ] Kubernetes deployment
 - [ ] APM integration
+- [ ] Absolute imports

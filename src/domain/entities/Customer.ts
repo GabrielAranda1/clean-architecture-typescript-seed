@@ -1,4 +1,4 @@
-import { Entity } from './Entity'
+import { Entity } from '@/domain/entities/Entity'
 
 export class Customer extends Entity<Customer> {
   constructor(props: Partial<Customer>) {

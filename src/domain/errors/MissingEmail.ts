@@ -1,4 +1,4 @@
-import { BusinessError, BusinessErrorType } from './BusinessError'
+import { BusinessError, BusinessErrorType } from '@/domain/errors'
 
 export class MissingEmailError extends BusinessError {
   constructor(message?: string) {
