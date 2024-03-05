@@ -5,6 +5,7 @@ Where to go and some ideas, not necessarily in order.
 - [x] Folder Structure
 - [x] Eslint and prettier style rules
 - [ ] Husky pre commit and pre push hooks
+- [x] TSyringe dependency injection
 - [x] Tsconfig paths
 - [x] Rest API example
 - [x] Http server
@@ -23,3 +24,9 @@ Where to go and some ideas, not necessarily in order.
 - [ ] Github Actions CI (Lint, Test, Build)
 - [ ] Github Actions CD (Docker, Kubernetes)
 - [ ] SonarQube integration
+- [ ] Conventional commits hook
+- [ ] Swagger docs for http endpoints
+- [ ] Third party API integration
+- [ ] Websocket server
+- [ ] GraphQL server
+- [ ] Cli tool to create new projects and components (usecases, repositories, etc)
