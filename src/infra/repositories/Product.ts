@@ -1,16 +1,14 @@
 import { inject, injectable } from 'tsyringe'
-import { IProductRepository } from '../../domain/ports/repositories/Product'
-import { Product } from '../../domain/entities/Product'
+import { IProductRepository } from '@/domain/ports/repositories/Product'
+import { Product } from '@/domain/entities/Product'
 import { Collection } from 'mongodb'
-import { MongoDbClient } from '../database/mongo'
+import { MongoDbClient } from '@/infra/database/mongo'
 
 @injectable()
 export class ProductRepository implements IProductRepository {
   private readonly collection: Collection
 
-  constructor(
-    @inject('MongoDbClient') protected readonly mongoDbClient: MongoDbClient,
-  ) {
+  constructor(@inject('MongoDbClient') protected readonly mongoDbClient: MongoDbClient) {
     this.collection = this.mongoDbClient.getCollection('products')
   }
   async create(product: Product): Promise<boolean> {
@@ -82,7 +80,7 @@ export class ProductRepository implements IProductRepository {
 
     const isUpdated = await this.collection.findOneAndUpdate(
       { id: product.id },
-      { $set: { ...parsedFilters, updated_at: new Date() } },
+      { $set: { ...parsedFilters, updatedAt: new Date() } },
     )
 
     return isUpdated?._id ? true : false

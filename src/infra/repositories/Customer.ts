@@ -1,16 +1,14 @@
 import { inject, injectable } from 'tsyringe'
-import { ICustomerRepository } from '../../domain/ports/repositories/Customer'
-import { Customer } from '../../domain/entities/Customer'
-import { MongoDbClient } from '../database/mongo'
+import { ICustomerRepository } from '@/domain/ports/repositories/Customer'
+import { Customer } from '@/domain/entities/Customer'
+import { MongoDbClient } from '@/infra/database/mongo'
 import { Collection } from 'mongodb'
 
 @injectable()
 export class CustomerRepository implements ICustomerRepository {
   private readonly collection: Collection
 
-  constructor(
-    @inject('MongoDbClient') protected readonly mongoDbClient: MongoDbClient,
-  ) {
+  constructor(@inject('MongoDbClient') protected readonly mongoDbClient: MongoDbClient) {
     this.collection = this.mongoDbClient.getCollection('customers')
   }
   async create(customer: Customer): Promise<boolean> {
