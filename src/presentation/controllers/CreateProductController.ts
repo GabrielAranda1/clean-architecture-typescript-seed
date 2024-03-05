@@ -9,13 +9,19 @@ import { IHttpResponse } from '../interfaces/IHttpResponse'
 export class CreateProductController implements IController {
   constructor(
     @inject('ICreateProductUseCase')
-    readonly createProductUseCase: ICreateProductUseCase
-  ) { }
+    readonly createProductUseCase: ICreateProductUseCase,
+  ) {}
   async handle(httpRequest: IHttpRequest): Promise<IHttpResponse> {
     const { name, category, description, price, imageLink } = httpRequest.body
 
-    const result = await this.createProductUseCase.create({ name, category, description, price, imageLink })
+    const result = await this.createProductUseCase.create({
+      name,
+      category,
+      description,
+      price,
+      imageLink,
+    })
 
     return created(result, 'Product created')
   }
-} 
+}

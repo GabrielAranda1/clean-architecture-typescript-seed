@@ -9,19 +9,27 @@ import { IListProductsUseCase } from './IListProducts'
 export class ListProductsUseCase implements IListProductsUseCase {
   constructor(
     @inject('IProductRepository')
-    private readonly productRepository: IProductRepository
-  ) { }
+    private readonly productRepository: IProductRepository,
+  ) {}
 
   async list(params: ListProductsDTO): Promise<Product[]> {
     if (params.category) {
-      const isValidCategory = Object.values(Category).includes(params.category as Category)
+      const isValidCategory = Object.values(Category).includes(
+        params.category as Category,
+      )
 
-      if (!isValidCategory) throw new InvalidParamError('Invalid param: category')
+      if (!isValidCategory)
+        throw new InvalidParamError('Invalid param: category')
     }
 
     const { name, category, description, price } = params
 
-    const products = await this.productRepository.list({ category: category as Category, name, description, price })
+    const products = await this.productRepository.list({
+      category: category as Category,
+      name,
+      description,
+      price,
+    })
 
     return products
   }

@@ -7,13 +7,24 @@ import { UpdateProductController } from '../../controllers/UpdateProductControll
 import { GetProductByIdController } from '../../controllers/GetProductByIdController'
 import { GetProductsByIdsController } from '../../controllers/GetProductsByIdsController'
 
-
 function registerProductRoutes(router: Router) {
-  router.post('/products', adaptRoute(container.resolve(CreateProductController)))
+  router.post(
+    '/products',
+    adaptRoute(container.resolve(CreateProductController)),
+  )
   router.get('/products', adaptRoute(container.resolve(ListProductsController)))
-  router.patch('/products/:productId', adaptRoute(container.resolve(UpdateProductController)))
-  router.get('/products/ids/', adaptRoute(container.resolve(GetProductsByIdsController)))
-  router.get('/products/:productId', adaptRoute(container.resolve(GetProductByIdController)))
+  router.patch(
+    '/products/:productId',
+    adaptRoute(container.resolve(UpdateProductController)),
+  )
+  router.get(
+    '/products/ids/',
+    adaptRoute(container.resolve(GetProductsByIdsController)),
+  )
+  router.get(
+    '/products/:productId',
+    adaptRoute(container.resolve(GetProductByIdController)),
+  )
 
   return router
 }

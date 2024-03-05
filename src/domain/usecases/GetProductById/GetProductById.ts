@@ -9,8 +9,8 @@ import { IProductRepository } from '../../ports/repositories/Product'
 export class GetProductByIdUseCase implements IGetProductByIdUseCase {
   constructor(
     @inject('IProductRepository')
-    private readonly productRepository: IProductRepository
-  ) { }
+    private readonly productRepository: IProductRepository,
+  ) {}
 
   async get(params: GetProductByIdDTO): Promise<Product> {
     const product = await this.productRepository.getById(params.productId)

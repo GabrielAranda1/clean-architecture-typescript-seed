@@ -8,7 +8,7 @@ export class MongoDbClient {
 
   static async connect(url: string): Promise<MongoDbClient> {
     return MongoClient.connect(url)
-      .then(connection => {
+      .then((connection) => {
         console.log('MongoDB connected successfully')
         return new MongoDbClient(connection)
       })

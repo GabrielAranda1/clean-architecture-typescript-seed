@@ -5,8 +5,14 @@ import { CreateCustomerController } from '../../controllers/CreateCustomerContro
 import { GetCustomerByIdController } from '../../controllers/GetCustomerByIdController'
 
 function registerCustomerRoutes(router: Router) {
-  router.post('/customers', adaptRoute(container.resolve(CreateCustomerController)))
-  router.get('/customers/:customerId', adaptRoute(container.resolve(GetCustomerByIdController)))
+  router.post(
+    '/customers',
+    adaptRoute(container.resolve(CreateCustomerController)),
+  )
+  router.get(
+    '/customers/:customerId',
+    adaptRoute(container.resolve(GetCustomerByIdController)),
+  )
 
   return router
 }

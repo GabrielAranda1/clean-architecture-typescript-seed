@@ -12,8 +12,8 @@ import { CustomerAlreadyExistsError } from '../../errors/CustomerAlreadyExists'
 export class CreateCustomerUseCase implements ICreateCustomerUseCase {
   constructor(
     @inject('ICustomerRepository')
-    private readonly customerRepository: ICustomerRepository
-  ) { }
+    private readonly customerRepository: ICustomerRepository,
+  ) {}
 
   async create(params: CreateCustomerDTO): Promise<Customer> {
     this.validateParams(params)
@@ -30,7 +30,6 @@ export class CreateCustomerUseCase implements ICreateCustomerUseCase {
 
     const createdCostumer = await this.customerRepository.getById(customer.id)
 
-
     return createdCostumer!
   }
 
@@ -39,18 +38,25 @@ export class CreateCustomerUseCase implements ICreateCustomerUseCase {
 
     if (params.email && !params.name) throw new MissingNameError()
 
-    if (!params.email && !params.name && !params.documentNumber) throw new MissingNecessaryDataError('Missing necessary data: name and email or documentNumber')
+    if (!params.email && !params.name && !params.documentNumber)
+      throw new MissingNecessaryDataError(
+        'Missing necessary data: name and email or documentNumber',
+      )
   }
 
   private async checkIfCustomerAlreadyExists(customer: Customer) {
     if (customer.documentNumber) {
-      const customerExists = await this.customerRepository.getByDocumentNumber(customer.documentNumber)
+      const customerExists = await this.customerRepository.getByDocumentNumber(
+        customer.documentNumber,
+      )
 
       if (customerExists) throw new CustomerAlreadyExistsError()
     }
 
     if (customer.email) {
-      const customerExists = await this.customerRepository.getByEmail(customer.email)
+      const customerExists = await this.customerRepository.getByEmail(
+        customer.email,
+      )
 
       if (customerExists) throw new CustomerAlreadyExistsError()
     }

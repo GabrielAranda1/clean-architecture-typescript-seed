@@ -9,8 +9,8 @@ import { NotFoundError } from '../../errors/NotFoundError'
 export class GetCustomerByIdUseCase implements IGetCustomerByIdUseCase {
   constructor(
     @inject('ICustomerRepository')
-    private readonly customerRepository: ICustomerRepository
-  ) { }
+    private readonly customerRepository: ICustomerRepository,
+  ) {}
 
   async get(params: GetCustomerByIdDTO): Promise<Customer> {
     const customer = await this.customerRepository.getById(params.customerId)

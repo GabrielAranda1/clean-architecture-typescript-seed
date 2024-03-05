@@ -5,11 +5,10 @@ export abstract class HttpError extends Error {
   constructor(
     message: string,
     statusCode: number,
-    details?: Record<string, any>
+    details?: Record<string, any>,
   ) {
     super(message)
     this.statusCode = statusCode
     this.details = details
   }
 }
-

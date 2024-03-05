@@ -13,11 +13,11 @@ const adaptRoute = (controller: IController) => {
       body: req.body,
       files: req.files,
       file: req.file,
-      token: req.token
+      token: req.token,
     }
     controller
       .handle(httpRequest)
-      .then(httpResponse => {
+      .then((httpResponse) => {
         const envelop = {
           data: httpResponse.body,
           message: httpResponse.message,
@@ -25,7 +25,7 @@ const adaptRoute = (controller: IController) => {
 
         res.status(httpResponse.statusCode).json(envelop)
       })
-      .catch(error => {
+      .catch((error) => {
         next(error)
       })
   }

@@ -9,7 +9,7 @@ export class CustomerRepository implements ICustomerRepository {
   private readonly collection: Collection
 
   constructor(
-    @inject('MongoDbClient') protected readonly mongoDbClient: MongoDbClient
+    @inject('MongoDbClient') protected readonly mongoDbClient: MongoDbClient,
   ) {
     this.collection = this.mongoDbClient.getCollection('customers')
   }
@@ -18,7 +18,7 @@ export class CustomerRepository implements ICustomerRepository {
       id: customer.id,
       name: customer.name,
       email: customer.email,
-      documentNumber: customer.documentNumber
+      documentNumber: customer.documentNumber,
     })
 
     return createdCustomer.acknowledged
@@ -35,7 +35,7 @@ export class CustomerRepository implements ICustomerRepository {
       id: customer.id,
       name: customer.name,
       email: customer.email,
-      documentNumber: customer.documentNumber
+      documentNumber: customer.documentNumber,
     })
   }
 
@@ -50,7 +50,7 @@ export class CustomerRepository implements ICustomerRepository {
       id: customer.id,
       name: customer.name,
       email: customer.email,
-      documentNumber: customer.documentNumber
+      documentNumber: customer.documentNumber,
     })
   }
 
@@ -65,7 +65,7 @@ export class CustomerRepository implements ICustomerRepository {
       id: customer.id,
       name: customer.name,
       email: customer.email,
-      documentNumber: customer.documentNumber
+      documentNumber: customer.documentNumber,
     })
   }
 }

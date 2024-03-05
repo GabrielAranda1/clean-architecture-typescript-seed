@@ -10,15 +10,21 @@ import { NotFoundError } from '../../errors/NotFoundError'
 export class UpdateProductUseCase implements IUpdateProductUseCase {
   constructor(
     @inject('IProductRepository')
-    private readonly productRepository: IProductRepository
-  ) { }
+    private readonly productRepository: IProductRepository,
+  ) {}
 
   async update(params: UpdateProductDTO): Promise<Product> {
     this.validateParams(params)
 
     const { name, category, description, price, productId } = params
 
-    const isUpdated = await this.productRepository.update({ id: productId, name, category: category as Category, description, price })
+    const isUpdated = await this.productRepository.update({
+      id: productId,
+      name,
+      category: category as Category,
+      description,
+      price,
+    })
 
     if (!isUpdated) throw new NotFoundError('Product not found')
 
@@ -29,10 +35,12 @@ export class UpdateProductUseCase implements IUpdateProductUseCase {
 
   private validateParams(params: UpdateProductDTO) {
     if (params.category) {
+      const isValidCategory = Object.values(Category).includes(
+        params.category as Category,
+      )
 
-      const isValidCategory = Object.values(Category).includes(params.category as Category)
-
-      if (!isValidCategory) throw new InvalidParamError('Invalid param: category')
+      if (!isValidCategory)
+        throw new InvalidParamError('Invalid param: category')
     }
   }
 }

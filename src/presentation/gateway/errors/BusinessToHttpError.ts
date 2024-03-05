@@ -1,4 +1,7 @@
-import { BusinessError, BusinessErrorType } from '../../../domain/errors/BusinessError'
+import {
+  BusinessError,
+  BusinessErrorType,
+} from '../../../domain/errors/BusinessError'
 import { BadRequest } from './BadRequest'
 import { Conflict } from './Conflict'
 import { HttpError } from './HttpError'

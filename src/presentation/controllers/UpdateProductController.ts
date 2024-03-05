@@ -9,14 +9,20 @@ import { IUpdateProductUseCase } from '../../domain/usecases'
 export class UpdateProductController implements IController {
   constructor(
     @inject('IUpdateProductUseCase')
-    readonly updateProductUseCase: IUpdateProductUseCase
-  ) { }
+    readonly updateProductUseCase: IUpdateProductUseCase,
+  ) {}
   async handle(httpRequest: IHttpRequest): Promise<IHttpResponse> {
     const { name, category, price, description } = httpRequest.body
     const { productId } = httpRequest.params
 
-    const result = await this.updateProductUseCase.update({ productId, name, category, price, description })
+    const result = await this.updateProductUseCase.update({
+      productId,
+      name,
+      category,
+      price,
+      description,
+    })
 
     return ok(result)
   }
-} 
+}

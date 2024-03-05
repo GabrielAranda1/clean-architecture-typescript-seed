@@ -9,8 +9,8 @@ import { IGetCustomerByIdUseCase } from '../../domain/usecases/GetCustomerById/I
 export class GetCustomerByIdController implements IController {
   constructor(
     @inject('IGetCustomerByIdUseCase')
-    readonly getCustomerByIdUseCase: IGetCustomerByIdUseCase
-  ) { }
+    readonly getCustomerByIdUseCase: IGetCustomerByIdUseCase,
+  ) {}
   async handle(httpRequest: IHttpRequest): Promise<IHttpResponse> {
     const { customerId } = httpRequest.params
 
@@ -18,4 +18,4 @@ export class GetCustomerByIdController implements IController {
 
     return ok(result)
   }
-} 
+}

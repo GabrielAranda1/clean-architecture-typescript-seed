@@ -4,7 +4,6 @@ import { IHttpResponse } from '../interfaces/IHttpResponse'
 
 const adaptErrorHandler = (httpResponse: IHttpResponse) => {
   return (req: IHttpRequest, res: Response, next: NextFunction) => {
-
     const envelop = {
       data: httpResponse.body,
       message: httpResponse.message,

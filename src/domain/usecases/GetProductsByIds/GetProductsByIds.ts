@@ -9,11 +9,12 @@ import { MissingNecessaryDataError } from '../../errors/MissingNecessaryData'
 export class GetProductsByIdsUseCase implements IGetProductsByIdsUseCase {
   constructor(
     @inject('IProductRepository')
-    private readonly productRepository: IProductRepository
-  ) { }
+    private readonly productRepository: IProductRepository,
+  ) {}
 
   async get(params: GetProductsByIdsDTO): Promise<Product[]> {
-    if (!params.productIds) throw new MissingNecessaryDataError('Missing params: ids')
+    if (!params.productIds)
+      throw new MissingNecessaryDataError('Missing params: ids')
 
     const productIds = params.productIds.split(',')
 

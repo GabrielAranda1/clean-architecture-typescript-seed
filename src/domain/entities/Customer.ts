@@ -16,5 +16,4 @@ export class Customer extends Entity<Customer> {
   public email?: string
 
   public documentNumber?: string
-
 }

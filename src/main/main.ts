@@ -11,6 +11,6 @@ async function startApp() {
   startHttpServer()
 }
 
-startApp().catch(error => {
+startApp().catch((error) => {
   console.error('Failed to start app:', error)
 })

@@ -9,7 +9,7 @@ export class ProductRepository implements IProductRepository {
   private readonly collection: Collection
 
   constructor(
-    @inject('MongoDbClient') protected readonly mongoDbClient: MongoDbClient
+    @inject('MongoDbClient') protected readonly mongoDbClient: MongoDbClient,
   ) {
     this.collection = this.mongoDbClient.getCollection('products')
   }
@@ -19,7 +19,7 @@ export class ProductRepository implements IProductRepository {
       name: product.name,
       category: product.category,
       price: product.price,
-      description: product.description
+      description: product.description,
     })
 
     return createdProduct.acknowledged
@@ -44,15 +44,18 @@ export class ProductRepository implements IProductRepository {
   async getByIds(ids: string[]): Promise<Product[]> {
     const products = await this.collection.find({ id: { $in: ids } }).toArray()
 
-    return products.map(product => new Product({
-      createdAt: product.created_at,
-      updatedAt: product.updated_at,
-      id: product.id,
-      name: product.name,
-      category: product.category,
-      price: product.price,
-      description: product.description,
-    }))
+    return products.map(
+      (product) =>
+        new Product({
+          createdAt: product.created_at,
+          updatedAt: product.updated_at,
+          id: product.id,
+          name: product.name,
+          category: product.category,
+          price: product.price,
+          description: product.description,
+        }),
+    )
   }
 
   async list(filters: Partial<Product>): Promise<Product[]> {
@@ -60,21 +63,27 @@ export class ProductRepository implements IProductRepository {
 
     const products = await this.collection.find(parsedFilters).toArray()
 
-    return products.map(product => new Product({
-      createdAt: product.created_at,
-      updatedAt: product.updated_at,
-      id: product.id,
-      name: product.name,
-      category: product.category,
-      price: product.price,
-      description: product.description,
-    }))
+    return products.map(
+      (product) =>
+        new Product({
+          createdAt: product.created_at,
+          updatedAt: product.updated_at,
+          id: product.id,
+          name: product.name,
+          category: product.category,
+          price: product.price,
+          description: product.description,
+        }),
+    )
   }
 
   async update(product: Partial<Product>): Promise<boolean> {
     const parsedFilters = this.buildFilters(product)
 
-    const isUpdated = await this.collection.findOneAndUpdate({ id: product.id }, { $set: { ...parsedFilters, updated_at: new Date() } })
+    const isUpdated = await this.collection.findOneAndUpdate(
+      { id: product.id },
+      { $set: { ...parsedFilters, updated_at: new Date() } },
+    )
 
     return isUpdated?._id ? true : false
   }
