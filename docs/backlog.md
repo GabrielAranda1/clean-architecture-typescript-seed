@@ -9,7 +9,7 @@ Where to go and some ideas, not necessarily in order.
 - [x] Rest API example
 - [x] Http server
 - [ ] Postgres integration with Knex
-- [x] Mongo integration
+- [x] Mongo integration with Mongodb lib
 - [ ] Redis integration
 - [ ] Jest unit testing
 - [ ] Jest integration testing
@@ -20,3 +20,6 @@ Where to go and some ideas, not necessarily in order.
 - [ ] Kubernetes deployment
 - [ ] APM integration
 - [x] Absolute imports
+- [ ] Github Actions CI (Lint, Test, Build)
+- [ ] Github Actions CD (Docker, Kubernetes)
+- [ ] SonarQube integration
