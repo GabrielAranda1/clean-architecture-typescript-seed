@@ -3,8 +3,8 @@ import { config } from 'dotenv'
 
 config()
 
-import { initializeContainer } from './factories'
-import { startHttpServer } from '../presentation/gateway/httpServer'
+import { initializeContainer } from '@/main/factories'
+import { startHttpServer } from '@/presentation/gateway/httpServer'
 
 async function startApp() {
   await initializeContainer()

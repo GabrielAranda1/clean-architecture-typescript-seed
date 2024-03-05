@@ -7,6 +7,7 @@
     "start": "node -r module-alias/register dist/src/main/main.js",
     "dev": "tsnd --respawn --ignore-watch node_modules -r tsconfig-paths/register ./src/main/main.ts",
     "build": "rimraf dist && tsc -p .",
+    "lint-prettier": "prettier-eslint \"src/**/*.ts\"",
     "lint": "prettier --write ./src/** && eslint --fix ./src/**"
   },
   "author": "Gabriel Aranda",
@@ -22,6 +23,7 @@
     "eslint": "8.46.0",
     "prettier": "^3.0.0",
     "prettier-eslint": "^16.3.0",
+    "prettier-eslint-cli": "^8.0.1",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.6"
