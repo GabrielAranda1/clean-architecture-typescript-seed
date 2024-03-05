@@ -7,7 +7,7 @@ Where to go and some ideas, not necessarily in order.
 - [ ] Husky pre commit and pre push hooks
 - [x] Tsconfig paths
 - [ ] Rest API example
-- [ ] Http server
+- [x] Http server
 - [ ] Postgres integration with Knex
 - [ ] Mongo integration
 - [ ] Redis integration
@@ -15,3 +15,7 @@ Where to go and some ideas, not necessarily in order.
 - [ ] Jest integration testing
 - [ ] GRPc server
 - [ ] RabbitMQ AMQP integration
+- [ ] Dockerfile
+- [ ] Docker compose
+- [ ] Kubernetes deployment
+- [ ] APM integration
