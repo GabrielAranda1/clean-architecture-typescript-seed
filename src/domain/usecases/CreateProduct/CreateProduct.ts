@@ -1,9 +1,8 @@
 import { inject, injectable } from 'tsyringe'
-import { CreateProductDTO } from './CreateProductDTO'
-import { MissingNecessaryDataError } from '../../errors/MissingNecessaryData'
-import { Category, Product } from '../../entities/Product'
-import { InvalidParamError } from '../../errors/InvalidParam'
-import { IProductRepository } from '../../ports/repositories/Product'
+import { CreateProductDTO } from '@/domain/usecases'
+import { MissingNecessaryDataError, InvalidParamError } from '@/domain/errors'
+import { Category, Product } from '@/domain/entities/Product'
+import { IProductRepository } from '@/domain/ports/repositories/Product'
 import { ICreateProductUseCase } from './ICreateProduct'
 
 @injectable()
@@ -43,13 +42,9 @@ export class CreateProductUseCase implements ICreateProductUseCase {
     }
 
     if (missingData.length > 0)
-      throw new MissingNecessaryDataError(
-        `Missing necessary data: ${missingData.join(', ')}`,
-      )
+      throw new MissingNecessaryDataError(`Missing necessary data: ${missingData.join(', ')}`)
 
-    const isValidCategory = Object.values(Category).includes(
-      params.category as Category,
-    )
+    const isValidCategory = Object.values(Category).includes(params.category as Category)
 
     if (!isValidCategory) throw new InvalidParamError('Invalid param: category')
   }

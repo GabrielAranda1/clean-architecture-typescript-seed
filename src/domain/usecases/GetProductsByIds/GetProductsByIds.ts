@@ -1,9 +1,8 @@
 import { inject, injectable } from 'tsyringe'
-import { IGetProductsByIdsUseCase } from './IGetProductsByIds'
-import { Product } from '../../entities/Product'
-import { IProductRepository } from '../../ports/repositories/Product'
-import { GetProductsByIdsDTO } from './GetProductsByIdsDTO'
-import { MissingNecessaryDataError } from '../../errors/MissingNecessaryData'
+import { IGetProductsByIdsUseCase, GetProductsByIdsDTO } from '@/domain/usecases'
+import { Product } from '@/domain/entities/Product'
+import { IProductRepository } from '@/domain/ports/repositories/Product'
+import { MissingNecessaryDataError } from '@/domain/errors'
 
 @injectable()
 export class GetProductsByIdsUseCase implements IGetProductsByIdsUseCase {
@@ -13,8 +12,7 @@ export class GetProductsByIdsUseCase implements IGetProductsByIdsUseCase {
   ) {}
 
   async get(params: GetProductsByIdsDTO): Promise<Product[]> {
-    if (!params.productIds)
-      throw new MissingNecessaryDataError('Missing params: ids')
+    if (!params.productIds) throw new MissingNecessaryDataError('Missing params: ids')
 
     const productIds = params.productIds.split(',')
 

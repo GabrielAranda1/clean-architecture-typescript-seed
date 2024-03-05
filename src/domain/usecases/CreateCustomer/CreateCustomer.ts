@@ -1,12 +1,13 @@
 import { inject, injectable } from 'tsyringe'
-import { ICustomerRepository } from '../../ports/repositories/Customer'
-import { ICreateCustomerUseCase } from './ICreateCustomer'
-import { CreateCustomerDTO } from './CreateCustomerDTO'
-import { Customer } from '../../entities/Customer'
-import { MissingEmailError } from '../../errors/MissingEmail'
-import { MissingNameError } from '../../errors/MissingName'
-import { MissingNecessaryDataError } from '../../errors/MissingNecessaryData'
-import { CustomerAlreadyExistsError } from '../../errors/CustomerAlreadyExists'
+import { ICustomerRepository } from '@/domain/ports/repositories/Customer'
+import { ICreateCustomerUseCase, CreateCustomerDTO } from '@/domain/usecases'
+import { Customer } from '@/domain/entities/Customer'
+import {
+  MissingEmailError,
+  MissingNameError,
+  MissingNecessaryDataError,
+  CustomerAlreadyExistsError,
+} from '@/domain/errors'
 
 @injectable()
 export class CreateCustomerUseCase implements ICreateCustomerUseCase {
@@ -54,9 +55,7 @@ export class CreateCustomerUseCase implements ICreateCustomerUseCase {
     }
 
     if (customer.email) {
-      const customerExists = await this.customerRepository.getByEmail(
-        customer.email,
-      )
+      const customerExists = await this.customerRepository.getByEmail(customer.email)
 
       if (customerExists) throw new CustomerAlreadyExistsError()
     }

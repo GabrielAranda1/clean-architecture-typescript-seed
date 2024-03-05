@@ -1,9 +1,8 @@
 import { inject, injectable } from 'tsyringe'
-import { ListProductsDTO } from './ListProductsDTO'
-import { Category, Product } from '../../entities/Product'
-import { InvalidParamError } from '../../errors/InvalidParam'
-import { IProductRepository } from '../../ports/repositories/Product'
-import { IListProductsUseCase } from './IListProducts'
+import { ListProductsDTO, IListProductsUseCase } from '@/domain/usecases'
+import { Category, Product } from '@/domain/entities/Product'
+import { InvalidParamError } from '@/domain/errors'
+import { IProductRepository } from '@/domain/ports/repositories/Product'
 
 @injectable()
 export class ListProductsUseCase implements IListProductsUseCase {
@@ -14,12 +13,9 @@ export class ListProductsUseCase implements IListProductsUseCase {
 
   async list(params: ListProductsDTO): Promise<Product[]> {
     if (params.category) {
-      const isValidCategory = Object.values(Category).includes(
-        params.category as Category,
-      )
+      const isValidCategory = Object.values(Category).includes(params.category as Category)
 
-      if (!isValidCategory)
-        throw new InvalidParamError('Invalid param: category')
+      if (!isValidCategory) throw new InvalidParamError('Invalid param: category')
     }
 
     const { name, category, description, price } = params

@@ -1,10 +1,8 @@
 import { inject, injectable } from 'tsyringe'
-import { UpdateProductDTO } from './UpdateProductDTO'
-import { Category, Product } from '../../entities/Product'
-import { InvalidParamError } from '../../errors/InvalidParam'
-import { IProductRepository } from '../../ports/repositories/Product'
-import { IUpdateProductUseCase } from './IUpdateProduct'
-import { NotFoundError } from '../../errors/NotFoundError'
+import { UpdateProductDTO, IUpdateProductUseCase } from '@/domain/usecases'
+import { Category, Product } from '@/domain/entities/Product'
+import { InvalidParamError, NotFoundError } from '@/domain/errors'
+import { IProductRepository } from '@/domain/ports/repositories/Product'
 
 @injectable()
 export class UpdateProductUseCase implements IUpdateProductUseCase {
@@ -35,12 +33,9 @@ export class UpdateProductUseCase implements IUpdateProductUseCase {
 
   private validateParams(params: UpdateProductDTO) {
     if (params.category) {
-      const isValidCategory = Object.values(Category).includes(
-        params.category as Category,
-      )
+      const isValidCategory = Object.values(Category).includes(params.category as Category)
 
-      if (!isValidCategory)
-        throw new InvalidParamError('Invalid param: category')
+      if (!isValidCategory) throw new InvalidParamError('Invalid param: category')
     }
   }
 }

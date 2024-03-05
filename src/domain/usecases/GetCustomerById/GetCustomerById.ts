@@ -1,9 +1,8 @@
 import { inject, injectable } from 'tsyringe'
-import { GetCustomerByIdDTO } from './GetCustomerByIdDTO'
-import { IGetCustomerByIdUseCase } from './IGetCustomer'
-import { Customer } from '../../entities/Customer'
-import { ICustomerRepository } from '../../ports/repositories/Customer'
-import { NotFoundError } from '../../errors/NotFoundError'
+import { GetCustomerByIdDTO, IGetCustomerByIdUseCase } from '@/domain/usecases'
+import { Customer } from '@/domain/entities/Customer'
+import { ICustomerRepository } from '@/domain/ports/repositories/Customer'
+import { NotFoundError } from '@/domain/errors'
 
 @injectable()
 export class GetCustomerByIdUseCase implements IGetCustomerByIdUseCase {
