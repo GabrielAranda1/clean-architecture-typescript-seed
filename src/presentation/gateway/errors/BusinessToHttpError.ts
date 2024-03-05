@@ -1,12 +1,11 @@
+import { BusinessError, BusinessErrorType } from '@/domain/errors'
 import {
-  BusinessError,
-  BusinessErrorType,
-} from '../../../domain/errors/BusinessError'
-import { BadRequest } from './BadRequest'
-import { Conflict } from './Conflict'
-import { HttpError } from './HttpError'
-import { InternalServerError } from './InternalServerError'
-import { NotFound } from './NotFound'
+  BadRequest,
+  InternalServerError,
+  Conflict,
+  HttpError,
+  NotFound,
+} from '@/presentation/gateway/errors'
 
 export function BusinessToHttpError(error: BusinessError): HttpError {
   switch (error.type) {

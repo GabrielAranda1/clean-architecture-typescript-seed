@@ -1,4 +1,4 @@
-import { HttpError } from './HttpError'
+import { HttpError } from '@/presentation/gateway/errors'
 
 export class Conflict extends HttpError {
   constructor(message: string, details?: Record<string, any>) {

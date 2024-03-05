@@ -1,9 +1,7 @@
 import { inject, injectable } from 'tsyringe'
-import { IController } from '../interfaces/IController'
-import { IHttpRequest } from '../interfaces/IHttpRequest'
-import { ok } from '../adapters/HttpResponseAdapter'
-import { IHttpResponse } from '../interfaces/IHttpResponse'
-import { IUpdateProductUseCase } from '../../domain/usecases'
+import { IController, IHttpRequest, IHttpResponse } from '@/presentation/interfaces'
+import { ok } from '@/presentation/adapters'
+import { IUpdateProductUseCase } from '@/domain/usecases'
 
 @injectable()
 export class UpdateProductController implements IController {

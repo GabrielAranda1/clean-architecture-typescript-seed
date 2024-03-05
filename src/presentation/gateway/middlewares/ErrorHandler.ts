@@ -1,7 +1,7 @@
 import { singleton } from 'tsyringe'
-import { BusinessError } from '../../../domain/errors/BusinessError'
-import { IHttpResponse } from '../../interfaces/IHttpResponse'
-import { BusinessToHttpError } from '../errors/BusinessToHttpError'
+import { BusinessError } from '@/domain/errors'
+import { IHttpResponse } from '@/presentation/interfaces'
+import { BusinessToHttpError } from '@/presentation/gateway/errors'
 
 @singleton()
 export class HttpErrorHandler {

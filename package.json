@@ -7,8 +7,7 @@
     "start": "node -r module-alias/register dist/src/main/main.js",
     "dev": "tsnd --respawn --ignore-watch node_modules -r tsconfig-paths/register ./src/main/main.ts",
     "build": "rimraf dist && tsc -p .",
-    "lint-prettier": "prettier-eslint \"src/**/*.ts\"",
-    "lint": "prettier --write ./src/** && eslint --fix ./src/**"
+    "lint": "prettier-eslint --write \"src/**/*.ts\""
   },
   "author": "Gabriel Aranda",
   "license": "MIT",

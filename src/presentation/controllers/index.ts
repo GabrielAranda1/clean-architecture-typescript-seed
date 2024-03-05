@@ -1,0 +1,7 @@
+export * from '@/presentation/controllers/CreateCustomerController'
+export * from '@/presentation/controllers/CreateProductController'
+export * from '@/presentation/controllers/GetCustomerByIdController'
+export * from '@/presentation/controllers/GetProductByIdController'
+export * from '@/presentation/controllers/GetProductsByIdsController'
+export * from '@/presentation/controllers/ListProductsController'
+export * from '@/presentation/controllers/UpdateProductController'

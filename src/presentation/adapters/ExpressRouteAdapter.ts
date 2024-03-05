@@ -1,6 +1,5 @@
 import { Response, NextFunction } from 'express'
-import { IController } from '../interfaces/IController'
-import { IHttpRequest } from '../interfaces/IHttpRequest'
+import { IController, IHttpRequest } from '@/presentation/interfaces'
 
 const adaptRoute = (controller: IController) => {
   return (req: IHttpRequest, res: Response, next: NextFunction) => {

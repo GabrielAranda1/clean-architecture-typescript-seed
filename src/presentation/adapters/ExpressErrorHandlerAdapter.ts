@@ -1,8 +1,8 @@
 import { Response, NextFunction } from 'express'
-import { IHttpRequest } from '../interfaces/IHttpRequest'
-import { IHttpResponse } from '../interfaces/IHttpResponse'
+import { IHttpRequest, IHttpResponse } from '@/presentation/interfaces'
 
 const adaptErrorHandler = (httpResponse: IHttpResponse) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return (req: IHttpRequest, res: Response, next: NextFunction) => {
     const envelop = {
       data: httpResponse.body,

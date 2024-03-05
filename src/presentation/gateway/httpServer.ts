@@ -17,13 +17,11 @@ function startHttpServer(): Server {
   expressServer.use(registerCustomerRoutes(router))
   expressServer.use(registerProductRoutes(router))
 
-  expressServer.use(
-    (err: Error, req: Request, res: Response, next: NextFunction) => {
-      const response = errorHandler.handle(err)
-      const errorHandlerAdapter = adaptErrorHandler(response)
-      return errorHandlerAdapter(req, res, next)
-    },
-  )
+  expressServer.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    const response = errorHandler.handle(err)
+    const errorHandlerAdapter = adaptErrorHandler(response)
+    return errorHandlerAdapter(req, res, next)
+  })
 
   const httpServer = expressServer.listen(process.env.PORT || 3000, () => {
     console.log(`Http server running at port ${process.env.PORT}`)
