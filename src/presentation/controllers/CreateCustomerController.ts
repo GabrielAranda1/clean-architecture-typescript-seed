@@ -9,13 +9,17 @@ import { IHttpResponse } from '../interfaces/IHttpResponse'
 export class CreateCustomerController implements IController {
   constructor(
     @inject('ICreateCustomerUseCase')
-    readonly createCustomerUseCase: ICreateCustomerUseCase
-  ) { }
+    readonly createCustomerUseCase: ICreateCustomerUseCase,
+  ) {}
   async handle(httpRequest: IHttpRequest): Promise<IHttpResponse> {
     const { name, email, documentNumber } = httpRequest.body
 
-    const result = await this.createCustomerUseCase.create({ name, email, documentNumber })
+    const result = await this.createCustomerUseCase.create({
+      name,
+      email,
+      documentNumber,
+    })
 
     return created(result, 'Customer created')
   }
-} 
+}
